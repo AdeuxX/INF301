@@ -1,13 +1,15 @@
+from execution_time import mesure_time
+
 class ListeChainee:
     liste_vide = () 
     def __init__(self,elem,next=liste_vide):
         assert next is ListeChainee.liste_vide or isinstance(ListeChainee)
         self.elem = elem
         self.next = next
-
+@mesure_time
 def insert(l,elem):
     return ListeChainee(elem,l)
-
+@mesure_time
 def recherche(l,element_recherche):
     element_liste = l.elem
     next_elem = l.next
@@ -20,7 +22,7 @@ def recherche(l,element_recherche):
         next_elem = element_liste.next
         #changer "element contient pas de next remplacer ca par les listes"
     return Exception("element introuvable ")
-    
+@mesure_time
 def suppr_elem(l,element_a_suppr):
     try :
         index = recherche(l,element_a_suppr)
